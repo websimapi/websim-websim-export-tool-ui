@@ -1,0 +1,10 @@
+{
+  "title": "websim-export-tool",
+  "description": "Export bridge for Websim projects",
+  "entrypoint": "index.js",
+  "author": "you@example.com",
+  "compatibility": {
+    "app": "reddit"
+  }
+}
+

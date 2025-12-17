@@ -1,0 +1,7 @@
+{
+  "appId": "com.example.websim",
+  "appName": "WebsimExport",
+  "webDir": "www",
+  "bundledWebRuntime": false
+}
+

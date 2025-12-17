@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Websim Export Tool UI</title>
+  <style>
+    :root{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial}
+    html,body{height:100%;margin:0}
+    #app{display:flex;flex-direction:column;gap:8px;padding:12px;height:100%;box-sizing:border-box}
+    header{display:flex;align-items:center;gap:8px}
+    .btn{padding:10px 14px;border-radius:8px;background:#0b6efd;color:#fff;border:none}
+    .row{display:flex;gap:8px;align-items:center}
+    .panel{flex:1;padding:10px;border-radius:8px;border:1px solid #e6e9ef;background:#fff;min-height:80px;overflow:auto}
+    .log{font-family:monospace;font-size:12px;white-space:pre-wrap}
+    select,input{padding:8px;border-radius:6px;border:1px solid #cfd6e3}
+    footer{display:flex;gap:8px;justify-content:flex-end}
+    @media (max-width:420px){
+      #app{padding:8px}
+      .btn{padding:10px}
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <header>
+      <strong>Websim Export Tool</strong>
+      <div style="flex:1"></div>
+      <div style="font-size:13px;color:#6b7280">Connected: <span id="status">—</span></div>
+    </header>
+
+    <div class="row">
+      <select id="export-target">
+        <option value="electron">Desktop (Electron Forge)</option>
+        <option value="android">Android (Capacitor)</option>
+        <option value="reddit">Reddit (Devvit)</option>
+      </select>
+      <input id="project-path" placeholder="Project path (absolute or workspace relative)" style="flex:1" />
+      <button class="btn" id="start-btn">Start Export</button>
+    </div>
+
+    <div class="row" style="align-items:flex-start">
+      <div class="panel" style="width:48%">
+        <div><strong>Options</strong></div>
+        <div style="margin-top:8px">
+          <label style="display:block;margin-bottom:6px">Build Mode</label>
+          <select id="build-mode">
+            <option value="development">development</option>
+            <option value="production">production</option>
+          </select>
+        </div>
+        <div style="margin-top:12px">
+          <label style="display:block;margin-bottom:6px">Extra CLI Flags</label>
+          <input id="extra-flags" placeholder="e.g. --arch x64" />
+        </div>
+      </div>
+
+      <div class="panel" style="width:52%">
+        <div><strong>Logs</strong></div>
+        <div id="logs" class="log" style="margin-top:8px;max-height:240px;overflow:auto"></div>
+      </div>
+    </div>
+
+    <footer>
+      <button id="open-server" style="padding:8px;border-radius:6px">Start Local Export Server</button>
+      <button id="stop-server" style="padding:8px;border-radius:6px" disabled>Stop Server</button>
+    </footer>
+  </div>
+
+  <script type="importmap">
+  {
+    "imports": {
+      "reconnecting-websocket": "https://esm.sh/reconnecting-websocket@4.4.0"
+    }
+  }
+  </script>
+
+  <script type="module" src="./renderer.js"></script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"4c6229722a6346bc8eb5cb0e5eae5d41","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>
+
